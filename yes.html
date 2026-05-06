@@ -4,30 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yay! 🎉</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .yes-title {
+            font-size: 2.5rem;
+            color: #fff;
+            animation: pop 1s ease;
+        }
+
+        .gif-container img {
+            width: 200px;
+            margin: 20px 0;
+        }
+
+        .yes-message {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        /* GLOW CARD */
+        .love-card {
+            margin: 40px auto;
+            padding: 25px;
+            max-width: 350px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #fff; }
+            to { box-shadow: 0 0 25px #ff4d6d; }
+        }
+
+        /* HEARTBEAT */
+        .heartbeat {
+            font-size: 2rem;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .badge {
+            margin-top: 10px;
+            padding: 10px;
+            background: #ff4d6d;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .date {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: none;
+            border-radius: 50%;
+            padding: 12px;
+            font-size: 18px;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="hearts-bg"></div>
 
-    <div class="container yes-container">
-        <h1 class="yes-title">Knew you would say yes! 🎉</h1>
+<div class="container">
 
-        <div class="gif-container">
-            <img id="cat-gif" src="https://media.tenor.com/eNHbizSfVb0AAAAj/lovemode-cute.gif" alt="celebrating">
-        </div>
+    <h1 class="yes-title">🎉 Knew you would say yes! 🎉</h1>
 
-        <p class="yes-message">You just made me the happiest person! 💕</p>
+    <div class="gif-container">
+        <img src="https://media.tenor.com/eNHbizSfVb0AAAAj/lovemode-cute.gif">
     </div>
 
-    <audio id="bg-music" loop>
-        <source src="music/beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
-    </audio>
+    <p class="yes-message">You just made me the happiest person! 💕</p>
 
-    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
+    <!-- NEW ROMANTIC SECTION -->
+    <div class="love-card">
+        <div class="heartbeat">💖</div>
 
-    <script src="yes-script.js"></script>
+        <div class="badge">💍 Barsha ❤️ Tushar — Now Married</div>
+
+        <p>🌟 You are my today and all of my tomorrows.</p>
+        <p>🌟 Every moment with you feels like magic.</p>
+        <p>🌟 Your smile is my favorite place.</p>
+        <p>🌟 I found my forever in you.</p>
+        <p>🌟 Loving you is the best decision of my life.</p>
+        <p>🌟 Together, we are unstoppable.</p>
+
+        <div class="date">📅 4th August 2024 — The day our story began 🌸</div>
+    </div>
+
+</div>
+
+<audio id="bg-music" loop>
+    <source src="music/beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()">🔊</button>
+
+<script>
+    function toggleMusic() {
+        const music = document.getElementById("bg-music");
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+
+    // CONFETTI BLAST
+    window.onload = () => {
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 }
+        });
+    };
+</script>
+
 </body>
 </html>
